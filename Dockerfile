@@ -12,5 +12,5 @@ ENV SERVICE_NAME=CMS
 
 RUN go build
 
-ENTRYPOINT ["/go/src/github.com/Yicwif/CMS"]
+ENTRYPOINT ["/go/src/github.com/Yicwif/CMS/CMS"]
 
