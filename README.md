@@ -118,6 +118,7 @@ hackson: CMS product by team CYC.
 	  "name":  "汽车信息",
 	  "id": car_info,
 	  "description": "汽车的型号、动力、配置等参数",
+	  "updatetime": "2016-09-08 19:00:19",
 	  "fieldscount": 3,
 	  "fields":[
 	      {
@@ -152,7 +153,7 @@ hackson: CMS product by team CYC.
 
 输入样例：
 
-	POST /content_types HTTP/1.1 
+	POST /contents/BenChiC200L HTTP/1.1 
 	Accept: application/json
 
 	{
@@ -192,7 +193,7 @@ hackson: CMS product by team CYC.
 
 输入样例：
 
-	POST /content_types HTTP/1.1 
+	GET /contents/BenChiC200L HTTP/1.1 
 	Accept: application/json
 
 	{
@@ -233,7 +234,7 @@ hackson: CMS product by team CYC.
 
 输出样例：
 
-	GET /content_types HTTP/1.1 
+	GET /contents HTTP/1.1 
 	Accept: application/json
 
 	{
