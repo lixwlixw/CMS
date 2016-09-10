@@ -124,15 +124,18 @@ hackson: CMS product by team CYC.
 	  "fields":[
 	      {
 	         "name": "型号",
-	         "id": "model"
+	         "id": "model",
+		 "type":"string"
 	      },
 	      {
 	         "name": "变速器",
-	         "id": "transmission"
+	         "id": "transmission",
+		 "type":"string"
 	      },
 	      {
 	         "name": "排量",
-	         "id": "displacement"
+	         "id": "displacement",
+          	 "type":"string"
 	      }
 	  ]
 	}
@@ -147,7 +150,7 @@ hackson: CMS product by team CYC.
 输入参数说明：
 	
 	content_id: 唯一id
-	content_type_id: 所属content_type
+	content_type_id: 所属content_type,必填
 	name: 名称
 	description: 描述
 	fieldsvalue: 各字段的名称和值. 需要先查询出此content_type的各个字段名称
@@ -160,18 +163,25 @@ hackson: CMS product by team CYC.
 	{
 		"name": "奔驰C200L信息",
 		"description": "2016款奔驰C200L",
+		"content_type_id": "car_info",
 		"fieldsvalue":[
 		  { 
 		     "id":"model",
-		     "value":"奔驰C200L"
+		     "name":"型号",
+		     "value":"奔驰C200L",
+		     "type":"string"
 		  },
 		  { 
 		     "id":"transmission",
-		     "value":"自动挡"
+		     "name": "变速器",
+		     "value":"自动挡",
+		     "type":"string"
 		  }
 		  { 
 		     "id":"displacement",
-		     "value":"2.0L"
+		     "name": "排量",
+		     "value":"2.0L",
+		     "type":"string"
 		  }
 		]
 	}
@@ -207,17 +217,20 @@ hackson: CMS product by team CYC.
 		  {
 		     "id":"model",
 		     "name": "变速器",
-		     "value":"奔驰C200L"
+		     "value":"奔驰C200L",
+		     "type":"string"
 		  },
 		  { 
 		     "id":"transmission",
 		     "name": "变速器",
-		     "value":"自动挡"
+		     "value":"自动挡",
+		     "type":"string"
 		  }
 		  { 
 		     "id":"displacement",
 		     "name": "排量",
-		     "value":"2.0L"
+		     "value":"2.0L",
+		     "type":"string"
 		  }
 		]
 	}
