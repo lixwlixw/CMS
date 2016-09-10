@@ -31,8 +31,9 @@ hackson: CMS product by team CYC.
 
 输入参数说明：
 	
-	name: 名称
-	description: 描述
+	name: 字段的名称
+	id: 字段的id （同一content_type_id下的字段id唯一）
+	type: 字段的描述
 
 输入样例：
 
