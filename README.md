@@ -40,21 +40,22 @@ hackson: CMS product by team CYC.
 	Accept: application/json
 
 	{
-	  "name":  "汽车信息",
-	  "description": "汽车的型号、动力、配置等参数",
 	  "fieldscount": 3,
 	  "fields":[
 	      {
 	         "name": "型号",
-	         "id": "model"
+	         "id": "model",
+	         "type": "string"
 	      },
 	      {
 	         "name": "变速器",
-	         "id": "transmission"
+	         "id": "transmission",
+	         "type": "string"
 	      },
 	      {
 	         "name": "排量",
-	         "id": "displacement"
+	         "id": "displacement",
+	         "type": "string"
 	      }
 	  ]
 	}
