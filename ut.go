@@ -95,3 +95,9 @@ func optionalIntParamInQuery(r *http.Request, paramName string, defaultInt int64
 		return i
 	}
 }
+
+func get(err error) {
+	if err != nil {
+		log.Error(err)
+	}
+}

@@ -23,8 +23,23 @@ var (
 )
 
 const (
-	ResultOK     = 0
-	ErrorMarshal = 1001
+	C_CONTENT_TYPE = "content_type"
+	C_CONTENT      = "content"
+
+	COL_NAME        = "name"
+	COL_ID          = "id"
+	COL_DESCRIPTION = "description"
+	COL_FIELDSCOUNT = "fieldscount"
+	COL_FIELDS      = "fields"
+	COL_UPDATETIME  = "updatetime"
+	COL_CT          = "ct"
+
+	COL_TYPE = "type"
+
+	COL_CONTENT_ID      = "content_id"
+	COL_CONTENT_TYPE_ID = "content_type_id"
+	COL_CREATEUSER      = "createuser"
+	COL_FIELDSVALUE     = "fieldsvalue"
 )
 
 func init() {

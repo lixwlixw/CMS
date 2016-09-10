@@ -9,15 +9,21 @@ import (
 	"time"
 )
 
+const (
+	ResultOK      = 0
+	ErrorMarshal  = 1001
+	ErrorBadReq   = 1400
+	ErrorDataBase = 1002
+)
+
+const (
+	SErrorBadReq = "Bad request"
+)
+
 type Result struct {
 	Code int         `json:"code"`
 	Msg  string      `json:"msg,omitempty"`
 	Data interface{} `json:"data,omitempty"`
-}
-
-type ResultPages struct {
-	Total   int         `json:"total"`
-	Results interface{} `json:"results"`
 }
 
 type Collections struct {
@@ -30,10 +36,10 @@ type ContentType struct {
 	Name        string       `json:"name"`
 	Id          string       `json:"id"`
 	Description string       `json:"description"`
-	UpdateTime  string       `json:"updatetime, omitempty"`
-	Ct          time.Time    `json:"-"`
-	FieldsCount int          `json:"fieldscount, omitempty"`
-	Fields      []ModelField `json:"fields, omitempty"`
+	UpdateTime  string       `json:"updatetime,omitempty"`
+	Ct          time.Time    `bson:"ct,omitempty" json:"-"`
+	FieldsCount int          `json:"fieldscount,omitempty"`
+	Fields      []ModelField `json:"fields,omitempty"`
 }
 
 type ModelField struct {
@@ -42,21 +48,25 @@ type ModelField struct {
 	Type string `json:"type"`
 }
 
+type FieldsPara struct {
+	Fields interface{} `json:"fields,omitempty"`
+}
+
 type Content struct {
-	ContentId     string       `json:"content_id"`
-	ContentTypeId string       `json:"content_type_id"`
+	ContentId     string       `bson:"content_id" json:"content_id"`
+	ContentTypeId string       `bson:"content_type_id" json:"content_type_id"`
 	Name          string       `json:"name"`
 	Description   string       `json:"description"`
-	UpdateTime    string       `json:"updatetime, omitempty"`
-	Ct            time.Time    `json:"-"`
-	CreateUser    string       `json:"createuser, omitempty"`
-	FieldsValue   []FieldValue `json:"fieldsvalue, omitempty"`
+	UpdateTime    string       `json:"updatetime,omitempty"`
+	Ct            time.Time    `bson:"ct,omitempty" json:"-"`
+	CreateUser    string       `json:"createuser,omitempty"`
+	FieldsValue   []FieldValue `json:"fieldsvalue,omitempty"`
 }
 
 type FieldValue struct {
 	Name  string `json:"name"`
 	Id    string `json:"id"`
-	Value string `json:"valued"`
+	Value string `json:"value"`
 	Type  string `json:"type"`
 }
 
@@ -135,9 +145,11 @@ func connect() *mgo.Session {
 }
 
 func initDb(session *mgo.Session) {
-	//db := session.DB(DB_NAMESPACE_MONGO)
-	//err := db.C(C_REPOSITORY).EnsureIndex(mgo.Index{Key: []string{COL_REPNAME}, Unique: true})
-	//get(err)
+	db := session.DB(DB_NAMESPACE_MONGO)
+	err := db.C(C_CONTENT_TYPE).EnsureIndex(mgo.Index{Key: []string{COL_ID}, Unique: true})
+	get(err)
+	err = db.C(C_CONTENT).EnsureIndex(mgo.Index{Key: []string{COL_CONTENT_ID, COL_CONTENT_TYPE_ID}, Unique: true})
+	get(err)
 }
 
 func getMgoAddr() (ip, port string) {
