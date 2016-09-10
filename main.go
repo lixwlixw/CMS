@@ -39,7 +39,14 @@ func main() {
 
 	router.GET("/", rootHandler)
 	//router.GET("/debug", rootHandler)
-	router.GET("/collections", getCollectionsHandler)
+	router.GET("/content_types", getContentTypesHandler)
+	router.POST("/content_types/:content_type_id", createContentTypeHandler)
+	router.PUT("/content_types/:content_type_id", updateContentTypeHandler)
+	router.GET("/content_types/:content_type_id", getOneContentTypeHandler)
+
+	router.POST("/contents/:content_id", createContentHandler)
+	router.GET("/contents/:content_id", getOneContentHandler)
+	router.GET("/contents", getContentsHandler)
 	// router.GET("/daemon/ep/:user", userEntryPointHandler)
 	// router.GET("/daemon/log/:index", getDaemonLogsHandler)
 	// router.GET("/daemon/status", DaemonStatusHandler)

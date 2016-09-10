@@ -15,10 +15,49 @@ type Result struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
+type ResultPages struct {
+	Total   int         `json:"total"`
+	Results interface{} `json:"results"`
+}
+
 type Collections struct {
 	Name        int `json:name`
 	Description int `json:description`
 	FieldsCount int `json:fieldscount`
+}
+
+type ContentType struct {
+	Name        string       `json:"name"`
+	Id          string       `json:"id"`
+	Description string       `json:"description"`
+	UpdateTime  string       `json:"updatetime, omitempty"`
+	Ct          time.Time    `json:"-"`
+	FieldsCount int          `json:"fieldscount, omitempty"`
+	Fields      []ModelField `json:"fields, omitempty"`
+}
+
+type ModelField struct {
+	Name string `json:"name"`
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
+
+type Content struct {
+	ContentId     string       `json:"content_id"`
+	ContentTypeId string       `json:"content_type_id"`
+	Name          string       `json:"name"`
+	Description   string       `json:"description"`
+	UpdateTime    string       `json:"updatetime, omitempty"`
+	Ct            time.Time    `json:"-"`
+	CreateUser    string       `json:"createuser, omitempty"`
+	FieldsValue   []FieldValue `json:"fieldsvalue, omitempty"`
+}
+
+type FieldValue struct {
+	Name  string `json:"name"`
+	Id    string `json:"id"`
+	Value string `json:"valued"`
+	Type  string `json:"type"`
 }
 
 type DB struct {
@@ -91,8 +130,14 @@ func connect() *mgo.Session {
 		}
 	}
 
-	//initDb(session)
+	initDb(session)
 	return session
+}
+
+func initDb(session *mgo.Session) {
+	//db := session.DB(DB_NAMESPACE_MONGO)
+	//err := db.C(C_REPOSITORY).EnsureIndex(mgo.Index{Key: []string{COL_REPNAME}, Unique: true})
+	//get(err)
 }
 
 func getMgoAddr() (ip, port string) {
