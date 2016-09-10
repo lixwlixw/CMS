@@ -14,7 +14,7 @@ hackson: CMS product by team CYC.
 
 输入样例：
 
-	POST /content_types HTTP/1.1 
+	POST /content_types/car_info HTTP/1.1 
 	Accept: application/json
 
 	{
@@ -36,12 +36,11 @@ hackson: CMS product by team CYC.
 
 输入样例：
 
-	PUT /content_types HTTP/1.1 
+	PUT /content_types/car_info HTTP/1.1 
 	Accept: application/json
 
 	{
 	  "name":  "汽车信息",
-	  "id": car_info,
 	  "description": "汽车的型号、动力、配置等参数",
 	  "fieldscount": 3,
 	  "fields":[
