@@ -84,12 +84,14 @@ hackson: CMS product by team CYC.
 		  {
 	             "name": "汽车信息",
 	    	     "id": car_info,
-	    	     "description": "汽车的型号、动力、配置等参数"
+	    	     "description": "汽车的型号、动力、配置等参数",
+	    	     "updatetime": "2016-09-08 19:00:19"
    	         },
    	         {
    	             "name": "房产信息",
 	             "id": "house_info",
-                     "description": "各城市的楼市信息"
+                     "description": "各城市的楼市信息",
+	    	     "updatetime": "2016-09-08 19:02:13"
    	         }
 		]
 	}
